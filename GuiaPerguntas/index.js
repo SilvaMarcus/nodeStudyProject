@@ -1,21 +1,21 @@
-const express = require("express");
-const app = express();
+expressApp = require('express')();
 
-app.set('view engine', 'ejs')
+// Pedindo ao Express para usar o EJs como View Engine
+expressApp.set('view engine','ejs');
 
-app.get("/:nome?/:lang?", (req,res)=>{
-    var nome = req.params.nome
-    var lang = req.params.lang
-
-    res.render('index',{
-        nome:nome,
+expressApp.get('/:nome/:lang',(req,res) => {
+    var nome = req.params.nome;
+    var lang = req.params.lang;
+    res.render("index", {
+        nome: nome,
         lang: lang,
-        empresa: "P2S Tecnologia",
-        salario: 2150
-    })
-})
+        empresa: "P2S tecnologia",
+        salario: 6000
+    });
+});
 
 
-app.listen(8080,()=>{
-    console.log("App Rodando")
+// abrimos a porta 8080 e pedimos para express escutar 
+expressApp.listen(8080, ()=> {
+    console.log("Servidor Ativo")
 })
